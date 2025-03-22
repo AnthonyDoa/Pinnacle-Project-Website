@@ -2,30 +2,24 @@
   "jobs": [
     {
       "id": "1",
-      "title": "Senior React Developer",
-      "type": "Full-Time",
-      "description": "We are seeking a talented Front-End Developer to join our team in Boston, MA. The ideal candidate will have strong skills in HTML, CSS, and JavaScript, with experience working with modern JavaScript frameworks such as React or Angular.",
-      "location": "Boston, MA",
-      "salary": "$70K - $80K",
+      "title": "March: Community Outreach Programs (Care Packages)",
+      "type": "March 2024 Campaign",
+      "location": "Charity: Peel Family Shelter ",
+      "description": "In our March Campaign, The Pinnacle Project raised over $300 and made 50 care packages towards the Peel Family Shelter.Care packages consisted of essentialitems such as socks, water, non-perishable food items, toothbrushes,toothpaste, and skin care products. ",
+      "salary": "Rasied: $300+",
       "company": {
-        "name": "NewTek Solutions",
-        "description": "NewTek Solutions is a leading technology company specializing in web development and digital solutions. We pride ourselves on delivering high-quality products and services to our clients while fostering a collaborative and innovative work environment.",
-        "contactEmail": "contact@teksolutions.com",
-        "contactPhone": "555-555-5555"
+        
       }
     },
     {
       "id": "2",
-      "title": "Front-End Engineer (React & Redux)",
-      "type": "Full-Time",
-      "location": "Miami, FL",
-      "description": "Join our team as a Front-End Developer in sunny Miami, FL. We are looking for a motivated individual with a passion for crafting beautiful and responsive web applications. Experience with UI/UX design principles and a strong attention to detail are highly desirable.",
-      "salary": "$70K - $80K",
+      "title": "April: Food Bank Campaign",
+      "type": "April 2024 Campaign April 23rd - April 30th",
+      "location": "Charity: Eden Food Bank",
+      "description": "With a tremendous amount of dilligence, our team was able to deliver over 100 pounds of food to Eden Food for Change which has made a signficant impact to those who are in need. ",
+      "salary": "Raised: 100 pounds+",
       "company": {
-        "name": "Veneer Solutions",
-        "description": "Veneer Solutions is a creative agency specializing in digital design and development. Our team is dedicated to pushing the boundaries of creativity and innovation to deliver exceptional results for our clients.",
-        "contactEmail": "contact@loremipsum.com",
-        "contactPhone": "555-555-5555"
+        
       }
     },
     {
