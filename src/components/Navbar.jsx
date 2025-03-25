@@ -13,9 +13,9 @@ const Navbar = () => {
         <div className='flex h-20 items-center justify-between'>
           <div className='flex flex-1 items-center justify-center md:items-stretch md:justify-start'>
             <NavLink className='flex flex-shrink-0 items-center mr-4' to='/'>
-              <img className='h-10 w-auto' src={logo} alt='React Jobs' />
+              <img className='h-10 w-auto' src={logo} alt='The Pinnacle Project' />
               <span className='hidden md:block text-white text-2xl font-bold ml-2'>
-                React Jobs
+              The Pinnacle Project
               </span>
             </NavLink>
             <div className='md:ml-auto'>
@@ -24,10 +24,22 @@ const Navbar = () => {
                   Home
                 </NavLink>
                 <NavLink to='/jobs' className={linkClass}>
-                  Jobs
+                  Campiagns
                 </NavLink>
                 <NavLink to='/add-job' className={linkClass}>
-                  Add Job
+                  Add Campaigns
+                </NavLink>
+                <NavLink to='/Team' className={linkClass}>
+                  Our Team
+                </NavLink>
+                <NavLink to='/VoluteerPartnerships' className={linkClass}>
+                  Voluteer & Partnerships
+                </NavLink>
+                <NavLink to='/Blog' className={linkClass}>
+                  Blog
+                </NavLink>
+                <NavLink to='https://www.instagram.com/the_pinnacleproject/' className={linkClass}>
+                  Instagram
                 </NavLink>
               </div>
             </div>
