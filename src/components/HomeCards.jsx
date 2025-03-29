@@ -1,10 +1,10 @@
 import React from "react";
-
+import bannerImage from "../assets/images/Banner.jpeg";
 const HomeCards = () => {
   return (
     <div className="flex flex-col md:flex-row items-center p-10 bg-indigo-600 text-white">
       <img
-        src="/assets/banner.jpeg"
+        src="/assets/images/Banner.jpeg"
         alt="Who we are"
         className="w-96 h-auto object-cover rounded-lg shadow-lg md:mr-10"
       />
@@ -24,9 +24,13 @@ With a passionate team of high school students from John Fraser Secondary School
             <h2 className="font-semibold">Co-president</h2>
             <p className="text-white">Cody Doan</p>
           </div>
+          
         </div>
       </div>
     </div>
+
+
+
   );
 };
 
