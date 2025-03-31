@@ -29,7 +29,7 @@ const Navbar = () => {
                 <NavLink to='/add-job' className={linkClass}>
                   Add Campaigns
                 </NavLink>
-                <NavLink to='/Team' className={linkClass}>
+                <NavLink to='/OurteamFull' className={linkClass}>
                   Our Team
                 </NavLink>
                 <NavLink to='/VoluteerPartnerships' className={linkClass}>
