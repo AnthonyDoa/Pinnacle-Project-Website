@@ -46,7 +46,7 @@ const EditJobPage = ({ updateJobSubmit }) => {
             
             <div className='mb-4'>
               <label className='block text-gray-700 font-bold mb-2'>
-                Job Listing Name
+                Campaign
               </label>
               <input
                 type='text'
@@ -74,7 +74,7 @@ const EditJobPage = ({ updateJobSubmit }) => {
                 placeholder='eg. Beautiful Apartment In Miami'
                 required
                 value={type}
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={(e) => setType(e.target.value)}
               />
             </div>
 
@@ -114,7 +114,7 @@ const EditJobPage = ({ updateJobSubmit }) => {
                 placeholder='eg. Beautiful Apartment In Miami'
                 required
                 value={salary}
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={(e) => setSalary(e.target.value)}
               />
             </div>
 
