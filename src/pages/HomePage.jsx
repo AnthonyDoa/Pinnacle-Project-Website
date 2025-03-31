@@ -5,6 +5,7 @@ import Qoute from '../components/Qoute';
 import JobListings from '../components/JobListings';
 import ViewAllJobs from '../components/ViewAllJobs';
 import Voluteer from '../components/Voluteer';
+import Partherships from '../components/Partherships';
 
 const HomePage = () => {
   return (
@@ -16,6 +17,7 @@ const HomePage = () => {
       <ViewAllJobs />
       <Ourteam />
       <Voluteer />
+      <Partherships />
 
     </>
   );
