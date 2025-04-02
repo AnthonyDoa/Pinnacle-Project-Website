@@ -11,7 +11,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import JobPage, { jobLoader } from './pages/JobPage';
 import AddJobPage from './pages/AddJobPage';
 import EditJobPage from './pages/EditJobPage';
-
+import OurteamFull from './pages/OurteamFull';
 const App = () => {
   // Add New Job
   const addJob = async (newJob) => {
@@ -62,6 +62,7 @@ const App = () => {
           loader={jobLoader}
         />
         <Route path='*' element={<NotFoundPage />} />
+        <Route path='/OurteamFull' element={<OurteamFull />} />
       </Route>
     )
   );
