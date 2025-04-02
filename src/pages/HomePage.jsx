@@ -6,6 +6,8 @@ import JobListings from '../components/JobListings';
 import ViewAllJobs from '../components/ViewAllJobs';
 import Voluteer from '../components/Voluteer';
 import Partherships from '../components/Partherships';
+import Contact from '../components/Contact';
+
 
 const HomePage = () => {
   return (
@@ -18,6 +20,7 @@ const HomePage = () => {
       <Ourteam />
       <Voluteer />
       <Partherships />
+      <Contact />
 
     </>
   );
