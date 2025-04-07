@@ -32,7 +32,7 @@ const Navbar = () => {
                 <NavLink to='/OurteamFull' className={linkClass}>
                   Our Team
                 </NavLink>
-                <NavLink to='/VoluteerPartnerships' className={linkClass}>
+                <NavLink to='/VoluteeringPartnerships' className={linkClass}>
                   Voluteer & Partnerships
                 </NavLink>
                 <NavLink to='/Blog' className={linkClass}>
