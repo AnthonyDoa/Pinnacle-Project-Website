@@ -2,7 +2,9 @@ import JobListings from '../components/JobListings';
 import ImageTrack from '../components/ImageTrack';
 import { Link } from "react-router-dom";
 import bannerImage from "../assets/images/Banner.jpeg";
-const JobPage = ({
+
+
+const JobsPage = ({
   title = "Goals & Camapigns",
   subtitle = "Make a difference in your community and learn about our goals and campaigns in helping families and individuals in the Mississauga area and globally.",
 }) => {
@@ -63,9 +65,82 @@ const JobPage = ({
           <div>
           <ImageTrack />;
           </div>
+          <div style={{ backgroundColor: '#1a1a1a', color: 'white', textAlign: 'center', padding: '6rem 1rem' }}>
+      <h1 style={{ fontSize: '2.5rem', fontWeight: '300', marginBottom: '2rem' }}>
+        Local volunteers are essential to the<br />success of our monthly campaigns.
+      </h1>
+      <Link
+        to="/VolunteeringPartnerships"
+        style={{
+          display: 'inline-block',
+          backgroundColor: 'transparent',
+          border: '2px solid white',
+          color: 'white',
+          padding: '0.75rem 1.5rem',
+          borderRadius: '0.5rem',
+          fontSize: '1rem',
+          textDecoration: 'none',
+          transition: 'all 0.3s ease'
+        }}
+        onMouseOver={e => {
+          e.target.style.backgroundColor = 'white';
+          e.target.style.color = '#1a1a1a';
+        }}
+        onMouseOut={e => {
+          e.target.style.backgroundColor = 'transparent';
+          e.target.style.color = 'white';
+        }}
+      >
+        Volunteer Today
+      </Link>
+    
+          
+            
+        </div>
+   
+          
           
     </section>
   );
 };
 
-export default JobPage;
+export default JobsPage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
