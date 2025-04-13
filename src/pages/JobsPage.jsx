@@ -10,10 +10,10 @@ const JobsPage = ({
 }) => {
   return (
     <section
-      className="bg-cover bg-center py-20 mb-4"
-      style={{ backgroundImage: `url(${bannerImage})` }}
+      className="bg-black bg-cover bg-center py-20 mb-4"
+       
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+      <div className="bg-black max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
         <div className="text-left">
           <h1 className="text-4xl font text-white sm:text-5xl md:text-6xl">
             {title}
@@ -62,9 +62,9 @@ const JobsPage = ({
               className="w-96 h-auto object-cover rounded-lg shadow-lg md:ml-10"
             />
           </div>
-          <div>
-          <ImageTrack />;
-          </div>
+          <div className="bg-black text-white min-h-screen">
+  <ImageTrack />
+</div>
           <div style={{ backgroundColor: '#1a1a1a', color: 'white', textAlign: 'center', padding: '6rem 1rem' }}>
       <h1 style={{ fontSize: '2.5rem', fontWeight: '300', marginBottom: '2rem' }}>
         Local volunteers are essential to the<br />success of our monthly campaigns.
