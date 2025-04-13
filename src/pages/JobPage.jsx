@@ -1,106 +1,120 @@
-import JobListings from '../components/JobListings';
-import ImageTrack from '../components/ImageTrack';
-import { Link } from "react-router-dom";
-import bannerImage from "../assets/images/Banner.jpeg";
+import { useParams, useLoaderData, useNavigate } from 'react-router-dom';
+import { FaArrowLeft, FaMapMarker } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-const JobPage = ({
-  title = "Goals & Camapigns",
-  subtitle = "Make a difference in your community and learn about our goals and campaigns in helping families and individuals in the Mississauga area and globally.",
-}) => {
+const JobPage = ({ deleteJob }) => {
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const job = useLoaderData();
+
+  const onDeleteClick = (jobId) => {
+    const confirm = window.confirm(
+      'Are you sure you want to delete this listing?'
+    );
+
+    if (!confirm) return;
+
+    deleteJob(jobId);
+
+    toast.success('Job deleted successfully');
+
+    navigate('/jobs');
+  };
+
   return (
-    <section
-      className="bg-cover bg-center py-20 mb-4"
-      style={{ backgroundImage: `url(${bannerImage})` }}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-        <div className="text-left">
-          <h1 className="text-4xl font text-white sm:text-5xl md:text-6xl">
-            {title}
-          </h1>
-          <p className="my-4 text-xl text-white">{subtitle}</p>
-          
-            
+    <>
+      <section>
+        <div className='container m-auto py-6 px-6'>
+          <Link
+            to='/jobs'
+            className='text-indigo-500 hover:text-indigo-600 flex items-center'
+          >
+            <FaArrowLeft className='mr-2' /> Back to Job Listings
+          </Link>
         </div>
-      </div>
-      <div className="flex flex-col md:flex-row items-center p-10 bg-black text-white">
-      <img
-        src="/assets/images/Banner.jpeg"
-        alt="Who we are"
-        className="w-96 h-auto object-cover rounded-lg shadow-lg md:mr-10"
-      />
-      <div className="text-left max-w-xl">
-        <h1 className="text-3xl font-bold">Monthly Camapigns </h1>
-        <p className="mt-4 text-lg">
-        Join The Pinnacle Project in our monthly campaigns, each with a specific focus. From education to the environment, health, and community well-being, we tackle different goals each month. These initiatives are tailored to address specific needs within our community, making it easy for you to engage with causes that matter most to you. By participating in these impactful campaigns, you contribute to the overall progress of our community. Whether you're passionate about learning, sustainability, or health, there's a monthly opportunity for you to make a meaningful difference. Let's work together, one focused campaign at a time, to create positive and lasting change within our community.
-        </p> </div></div>
-      <JobListings />
-       <div className="flex flex-col md:flex-row items-center p-10 bg-indigo-600 text-white">
-            {/* Text Section - Now on the Left */}
-            <div className="text-left max-w-xl md:mr-10">
-              <h1 className="text-3xl font-bold">Getting Involved & Volunteering</h1>
-              <p className="mt-4 text-lg">
-              Unlock meaningful experiences by volunteering with The Pinnacle Project! High school students can contribute their time to make a positive impact on our community. Gain valuable volunteer hours while making a difference in the lives of others. As a token of appreciation, participants receive a reference letter highlighting their dedication and contributions. Join us in fostering positive change and building a better future together. Enrich your high school journey with purposeful volunteering at The Pinnacle Project.
-              </p>
-      
-             
-      
-              {/* Link Button */}
-              <Link
-               to = "/Voluteer&Parthership"
-                
-                className="mt-6 inline-block bg-white text-indigo-600 font-semibold px-6 py-3 rounded-xl shadow-lg hover:bg-gray-200 transition"
-              >
-                Learn More
-              </Link>
-            </div>
-      
-            {/* Image Section - Now on the Right */}
-            <img
-              src={bannerImage}
-              alt="Who we are"
-              className="w-96 h-auto object-cover rounded-lg shadow-lg md:ml-10"
-            />
+      </section>
+
+      <section className='bg-indigo-50'>
+        <div className='container m-auto py-10 px-6'>
+          <div className='grid grid-cols-1 md:grid-cols-70/30 w-full gap-6'>
+            <main>
+              <div className='bg-white p-6 rounded-lg shadow-md text-center md:text-left'>
+                <div className='text-gray-500 mb-4'>{job.type}</div>
+                <h1 className='text-3xl font-bold mb-4'>{job.title}</h1>
+                <div className='text-gray-500 mb-4 flex align-middle justify-center md:justify-start'>
+                  <FaMapMarker className='text-orange-700 mr-1' />
+                  <p className='text-orange-700'>{job.location}</p>
+                </div>
+              </div>
+
+              <div className='bg-white p-6 rounded-lg shadow-md mt-6'>
+                <h3 className='text-indigo-800 text-lg font-bold mb-6'>
+                  Job Description
+                </h3>
+
+                <p className='mb-4'>{job.description}</p>
+
+                <h3 className='text-indigo-800 text-lg font-bold mb-2'>
+                  Salary
+                </h3>
+
+                <p className='mb-4'>{job.salary} / Year</p>
+              </div>
+            </main>
+
+            {/* <!-- Sidebar --> */}
+            <aside>
+              <div className='bg-white p-6 rounded-lg shadow-md'>
+                <h3 className='text-xl font-bold mb-6'>Company Info</h3>
+
+                <h2 className='text-2xl'>{job.company.name}</h2>
+
+                <p className='my-2'>{job.company.description}</p>
+
+                <hr className='my-4' />
+
+                <h3 className='text-xl'>Contact Email:</h3>
+
+                <p className='my-2 bg-indigo-100 p-2 font-bold'>
+                  {job.company.contactEmail}
+                </p>
+
+                <h3 className='text-xl'>Contact Phone:</h3>
+
+                <p className='my-2 bg-indigo-100 p-2 font-bold'>
+                  {' '}
+                  {job.company.contactPhone}
+                </p>
+              </div>
+
+              <div className='bg-white p-6 rounded-lg shadow-md mt-6'>
+                <h3 className='text-xl font-bold mb-6'>Manage Job</h3>
+                <Link
+                  to={`/edit-job/${job.id}`}
+                  className='bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block'
+                >
+                  Edit Job
+                </Link>
+                <button
+                  onClick={() => onDeleteClick(job.id)}
+                  className='bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block'
+                >
+                  Delete Job
+                </button>
+              </div>
+            </aside>
           </div>
-          <div>
-          <ImageTrack />;
-          </div>
-          <div style={{ backgroundColor: '#1a1a1a', color: 'white', textAlign: 'center', padding: '6rem 1rem' }}>
-      <h1 style={{ fontSize: '2.5rem', fontWeight: '300', marginBottom: '2rem' }}>
-        Local volunteers are essential to the<br />success of our monthly campaigns.
-      </h1>
-      <Link
-        to="/VolunteeringPartnerships"
-        style={{
-          display: 'inline-block',
-          backgroundColor: 'transparent',
-          border: '2px solid white',
-          color: 'white',
-          padding: '0.75rem 1.5rem',
-          borderRadius: '0.5rem',
-          fontSize: '1rem',
-          textDecoration: 'none',
-          transition: 'all 0.3s ease'
-        }}
-        onMouseOver={e => {
-          e.target.style.backgroundColor = 'white';
-          e.target.style.color = '#1a1a1a';
-        }}
-        onMouseOut={e => {
-          e.target.style.backgroundColor = 'transparent';
-          e.target.style.color = 'white';
-        }}
-      >
-        Volunteer Today
-      </Link>
-    
-          
-            
         </div>
-   
-          
-          
-    </section>
+      </section>
+    </>
   );
 };
 
-export default JobPage;
+const jobLoader = async ({ params }) => {
+  const res = await fetch(`/api/jobs/${params.id}`);
+  const data = await res.json();
+  return data;
+};
+
+export { JobPage as default, jobLoader };
