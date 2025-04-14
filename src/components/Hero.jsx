@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 
 const Hero = () => {
@@ -10,9 +11,9 @@ const Hero = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeInOut' }}
-          className="text-4xl sm:text-6xl lg:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-300"
+          className="text-3xl sm:text-5xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-300"
         >
-          VIVA LA LABIA
+         The Pinnacle Project
         </motion.h1>
 
         <motion.div
@@ -23,7 +24,7 @@ const Hero = () => {
         >
           {/* Shell image/design with logo */}
           <div
-            className="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 bg-gradient-to-br from-pink-500/20 to-purple-500/20 rounded-full
+            className="w-8 h-38 sm:w-64 sm:h-64 md:w-70 md:h-70 bg-gradient-to-br from-pink-500/20 to-purple-500/20 rounded-full
                        border-2 border-white/10 shadow-lg flex items-center justify-center relative" // Added relative for absolute positioning
           >
             <div className="w-32 h-32 sm:w-48 sm:h-48 md:w-60 md:h-60 rounded-full bg-white/5 backdrop-blur-md flex items-center justify-center">
@@ -31,19 +32,30 @@ const Hero = () => {
               <img
                 src="your-logo-url.png"  // Replace with your logo URL
                 alt="Logo"
-                className="max-w-80% max-h-80% rounded-full" //Adjust size as needed
+                className="max-w-60% max-h-60% rounded-full" //Adjust size as needed
               />
             </div>
+            
           </div>
         </motion.div>
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: 'easeInOut' }}
+          className=" text-xl sm:text-3xl lg:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-300"
+        >
+         Making an Impact and Changing Lives through Initiatives and Campaigns in the Mississauga Community
+        </motion.h2>
 
         <motion.div
+        
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeInOut', delay: 0.6 }}
         >
-          {/* Replaced problematic Button with standard button. */}
-          <button
+          
+          <Link
+          to='/jobs'
             className="bg-gradient-to-r from-purple-500/20 to-pink-500/20
                 text-white border-2 border-white/10
                 backdrop-blur-md shadow-lg
@@ -52,8 +64,8 @@ const Hero = () => {
                 font-semibold text-lg sm:text-xl
                 px-6 sm:px-8 py-2 sm:py-3 rounded-md"
           >
-            Visit Resource
-          </button>
+            Learn More
+          </Link>
         </motion.div>
       </div>
     </div>
