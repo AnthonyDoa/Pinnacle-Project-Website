@@ -1,57 +1,76 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHandshake, faHeart, faMapMarkerAlt, faUsers } from '@fortawesome/free-solid-svg-icons'; // Example icons
+import './OurMission.css';
 
-const HomeCards = () => {
+// Import your image files
+
+
+const OurMission = () => {
+  const missionText = `The Pinnacle Project is a community charity based in the Municipality of Mississauga, ON, dedicated to making a positive impact in our community. Our mission is to provide support and resources to those in need, and to create a better future for all. Through our various programs, initiatives, and campaigns, we strive to bring hope and relief to those facing adversity.`;
+  const teamText = `With a passionate team of high school students from John Fraser Secondary School and a strong network of partners, we are committed to driving meaningful change and fostering a culture of compassion and generosity.`;
+  const joinText = `Join us in our mission to build a brighter, more inclusive society for everyone.`;
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-pink-900 to-black p-4 flex flex-col items-center justify-center">
-      <div className="max-w-4xl mx-auto text-center space-y-8">
-        
+    <div className="bg-gradient-to-br from-blue-600 to-green-100 py-16 md:py-24">
+      <div className="container mx-auto px-6 md:px-12 relative">
+        {/* Subtle background graphic (optional) */}
+        <div className="absolute top-0 left-0 w-full h-full bg-blue-50 opacity-10 rounded-lg transform rotate-3"></div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: 'easeInOut', delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-left justify-center gap-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeInOut' }}
+          className="text-center mb-10"
         >
-          
-          <div
-            className="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 bg-gradient-to-br from-pink-500/20 to-purple-500/20
-                       border-2 border-white/10 shadow-lg flex items-center justify-center relative"
+          <h2 className="text-3xl lg:text-4xl font-semibold text-blue-700 mb-4">
+            <FontAwesomeIcon icon={faHeart} className="mr-2 text-blue-500" /> Our Mission
+          </h2>
+          <div className="w-24 h-1 bg-green-400 rounded-full mx-auto"></div>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-12">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: 'easeInOut', delay: 0.2 }}
+            className="rounded-lg shadow-md p-8 mission-box" // Added mission-box class
           >
-            <div className="w-32 h-32 sm:w-48 sm:h-48 md:w-60 md:h-60 bg-white/5 backdrop-blur-md flex items-center justify-center rounded-md"> {/* Changed to rounded-md */}
-              {/* Logo added here */}
-              <img
-                src="your-logo-url.png"
-                alt="Logo"
-                className="max-w-80% max-h-80%"
-              />
-            </div>
+            <FontAwesomeIcon icon={faMapMarkerAlt} className="text-green-300 text-2xl mb-4" />
+            <p className="text-lg text-white leading-relaxed">
+              {missionText}
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: 'easeInOut', delay: 0.4 }}
+            className="rounded-lg shadow-md p-8 team-box" // Added team-box class
+          >
+            <FontAwesomeIcon icon={faUsers} className="text-blue-300 text-2xl mb-4" />
+            <p className="text-lg text-white leading-relaxed">
+              {teamText}
+            </p>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeInOut', delay: 0.6 }}
+          className="mt-12 text-center"
+        >
+          <div className="bg-green-50 rounded-lg p-8 shadow-inner">
+            <FontAwesomeIcon icon={faHandshake} className="text-blue-600 text-3xl mb-4" />
+            <p className="text-xl font-semibold text-blue-700">{joinText}</p>
+            
           </div>
-            {/* Title and Text Content */}
-            <div className="text-left space-y-6 sm:space-y-4 max-w-sm">
-                <h2 className="text-2xl sm:text-4xl font-semibold text-white">Oakley Project 2075</h2>
-                <p className="text-gray-300 text-base sm:text-lg">
-                A conceptual project exploring the future of Oakley.  This project showcases a futuristic aesthetic and innovative design concepts.
-                </p>
-                <button
-                    className="bg-gradient-to-r from-purple-500/20 to-pink-500/20
-                        text-white border-2 border-white/10
-                        backdrop-blur-md shadow-lg
-                        hover:from-purple-500/30 hover:to-pink-500/30
-                        hover:scale-105 transition-all duration-300
-                        font-semibold text-lg sm:text-xl
-                        px-6 sm:px-8 py-2 sm:py-3 rounded-md"
-                >
-                Visit Resource
-                </button>
-            </div>
         </motion.div>
       </div>
     </div>
   );
 };
 
-export default HomeCards;
-
-
-
+export default OurMission;
