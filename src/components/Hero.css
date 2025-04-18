@@ -1,0 +1,9 @@
+
+/* Hero.css */
+.hero-container {
+  background-image: linear-gradient(to bottom right, rgba(30, 58, 138, 0.7), rgba(59, 130, 246, 0.5)),
+                    url('your-dark-blue-texture.jpg'); /* Replace with your image URL */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
