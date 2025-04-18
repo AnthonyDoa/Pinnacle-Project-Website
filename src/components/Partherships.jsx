@@ -3,7 +3,7 @@ import bannerImage from "../assets/images/Banner.jpeg";
 import { Link } from "react-router-dom";
 const Partherships = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center p-10 bg-indigo-600 text-white">
+    <div className="flex flex-col md:flex-row items-center p-10 bg-gradient-to-br from-blue-600 to-green-100 text-white">
       <img
         src="/assets/images/Banner.jpeg"
         alt="Who we are"
