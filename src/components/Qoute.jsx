@@ -1,30 +1,47 @@
-import React from "react";
+import React from 'react';
+import styled from 'styled-components';
 
-const Qoute = () => {
+const QuoteCard = styled.div`
+  background-color:rgba(10, 133, 167, 0.43);
+  border-radius: 8px;
+  padding: 3rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin: 2rem auto;
+  max-width: 768px;
+  text-align: center;
+`;
+
+const QuoteText = styled.blockquote`
+  color: #333;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+`;
+
+const Source = styled.p`
+  color: #777;
+  font-size: 0.9rem;
+`;
+
+const Title = styled.h3`
+  color: #2c5282; /* A nice blue */
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+`;
+
+const FramedQuote = () => {
+  const quote = `"A project with no end date always seems to require more work, continually ongoing. The pinnacle represents the highest point of our goals, where we want to reach. When these ideas come together, The Pinnacle Project emerges as a unique initiative, a transformative endeavor. We aim to create hope and a positive change in our local  communities for a brighter future."`;
+  const source = "Cody Doan & Meesam Ali Merchant (Co-founders)";
+  const title = "The Meaning Behind The Pinnacle Project";
+
   return (
-    <div className="flex flex-col md:flex-row items-center p-10 bg-black text-white">
-     
-      <div className="text-center">
-        <h1 className="text-3xl font-bold">The Meaning Behind The Pinnacle Project</h1>
-        <p className="mt-4 text-lg">
-        "The Pinnacle Project is a community charity based in the Municipality of Missisauga, ON, dedicated to making a positive impact in our community. Our mission is to provide support and resources to those in need, and to create a better future for all. Through our various programs, initiatives, and camapigns, we strive to bring hope and relief to those facing adversity.
-
-With a passionate team of high school students from John Fraser Secondary School and a strong network of partners, we are committed to driving meaningful change and fostering a culture of compassion and generosity. Join us in our mission to build a brighter, more inclusive society for everyone."
-        </p>
-        <div className=" mt-6">
-          <div className="text-center">
-            <h2 className="font-semibold">Co-Founders</h2>
-            <p className="text-white">Meesam Ali & Cody Doan </p>
-          </div>
-         
-          
-        </div>
-      </div>
-    </div>
-
-
-
+    <QuoteCard>
+      <Title>{title}</Title>
+      <QuoteText>{quote}</QuoteText>
+      <Source>- {source}</Source>
+    </QuoteCard>
   );
 };
 
-export default Qoute;
+export default FramedQuote;
