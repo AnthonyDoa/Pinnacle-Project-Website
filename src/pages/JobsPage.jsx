@@ -2,6 +2,10 @@ import JobListings from '../components/JobListings';
 import ImageTrack from '../components/ImageTrack';
 import { Link } from "react-router-dom";
 import bannerImage from "../assets/images/Banner.jpeg";
+import { motion } from 'framer-motion';
+
+
+
 
 
 const JobsPage = ({
@@ -10,19 +14,93 @@ const JobsPage = ({
 }) => {
   return (
     <section
-      className="bg-black bg-cover bg-center py-20 mb-4"
+      
        
     >
-      <div className="bg-black max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-        <div className="text-left">
-          <h1 className="text-4xl font text-white sm:text-5xl md:text-6xl">
-            {title}
-          </h1>
-          <p className="my-4 text-xl text-white">{subtitle}</p>
-          
-            
-        </div>
+      <div className="bg-gradient-to-br from-blue-600 to-purple-400 hero-container min-h-screen flex flex-col items-center justify-center">
+      <div className="max-w-4xl mx-auto text-center space-y-8">
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: 'easeInOut' }}
+          className="text-3xl sm:text-5xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500"
+        >
+          The Pinnacle Project
+        </motion.h1>
+
+        
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: 'easeInOut' }}
+          className=" text-xl sm:text-3xl lg:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500"
+        >
+          Making an Impact and Changing Lives through Initiatives and Campaigns in the Mississauga Community
+        </motion.h2>
+
+        <motion.div
+
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: 'easeInOut', delay: 0.6 }}
+        >
+        </motion.div>
       </div>
+    </div>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <div className="flex flex-col md:flex-row items-center p-10 bg-black text-white">
       <img
         src="/assets/images/Banner.jpeg"
