@@ -22,12 +22,12 @@ const Contact = ({ addJobSubmit }) => {
   };
 
   return (
-    <section className='bg-black'>
+    <section className='bg-gradient-to-br from-purple-600 to-green-600'>
       <div className='container max-w-29xl py-24 flex flex-col md:flex-row-reverse '>
         {/* Right Side Text */}
         <div className='md:w-1/2 text-white px-6 mb-6 md:mb-0'>
           <h2 className='text-2xl font-bold mb-2'>Contact Us Today</h2>
-          <p className='text-gray-400'>
+          <p className='text-white'>
             Fill out the form below to get in touch with us. We are here to answer any questions you may have and provide the support you need.
           </p>
         </div>
