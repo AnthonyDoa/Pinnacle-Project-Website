@@ -1,3 +1,4 @@
+import { div } from "framer-motion/client";
 import React from "react";
 
 const teamMembers = [
@@ -25,7 +26,20 @@ const teamMembers = [
 
 const OurteamFull = () => {
   return (
-    <div className="bg-white py-10 text-center">
+    
+    <div className=" text-center">
+      <main className="container  bg-gradient-to-br from-blue-600 to-cyan-500 mx-auto py-12 px-6">
+    <section className="text-center mb-8">
+      <h1 className="text-4xl font-bold text-white mb-4">Meet Our Team</h1>
+      <p className="text-lg text-white">
+       Pinnacle Project is an open club, free for anyone to join. Learn more about our current Executive Team!
+      </p>
+    </section>
+
+    <section className="bg-white rounded-lg shadow-md overflow-hidden">
+      <img src="https://plus.unsplash.com/premium_photo-1745048722723-c9752dd87662?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyMXx8fGVufDB8fHx8fA%3D%3D" alt="Our Team" className="w-full h-auto" style={{ maxHeight: '300px', objectFit: 'cover' }} />
+    </section>
+  </main>
       <h2 className="text-3xl font-bold mb-6">Meet the...</h2>
       <h1 className="text-4xl font-extrabold mb-10">Executive Team</h1>
       <div className="flex justify-center flex-wrap gap-8">
