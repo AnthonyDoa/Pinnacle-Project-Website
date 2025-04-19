@@ -9,99 +9,55 @@ import { motion } from 'framer-motion';
 
 
 const JobsPage = ({
-  title = "Goals & Camapigns",
-  subtitle = "Make a difference in your community and learn about our goals and campaigns in helping families and individuals in the Mississauga area and globally.",
+
 }) => {
   return (
-    <section
+    <section className= "bg-black"
       
        
     >
-      <div className="bg-gradient-to-br from-blue-600 to-purple-400 hero-container min-h-screen flex flex-col items-center justify-center">
-      <div className="max-w-4xl mx-auto text-center space-y-8">
-        <motion.h1
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeInOut' }}
-          className="text-3xl sm:text-5xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500"
-        >
-          The Pinnacle Project
-        </motion.h1>
-
-        
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeInOut' }}
-          className=" text-xl sm:text-3xl lg:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500"
-        >
-          Making an Impact and Changing Lives through Initiatives and Campaigns in the Mississauga Community
-        </motion.h2>
-
-        <motion.div
-
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeInOut', delay: 0.6 }}
-        >
-        </motion.div>
-      </div>
+<div
+  className="hero-container flex flex-col items-center justify-start pt-20"
+  style={{
+    backgroundImage: 'url("https://images.unsplash.com/photo-1744762561513-6691932920fb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNXx8fGVufDB8fHx8fA%3D%3D")',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    minHeight: '60vh', /* Adjust this value as needed */
+  }}
+>
+  <div className="max-w-4xl mx-auto text-center space-y-8">
+    <div className="inline-block">
+      <motion.h1
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: 'easeInOut' }}
+        className="text-3xl sm:text-5xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500"
+      >
+        Goals & Campaigns
+      </motion.h1>
     </div>
-      
 
+    <div className="inline-block">
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: 'easeInOut' }}
+        className=" text-xl sm:text-3xl lg:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500"
+      >
+        Make a difference in your community and learn about our goals and
+        campaigns in helping families and individuals in the Mississauga area
+        and globally.
+      </motion.h2>
+    </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <div className="flex flex-col md:flex-row items-center p-10 bg-black text-white">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: 'easeInOut', delay: 0.6 }}
+    ></motion.div>
+  </div>
+</div>
+      <div className="flex flex-col md:flex-row items-center p-10 bg-gradient-to-br from-black to-gray-500 text-white">
       <img
         src="/assets/images/Banner.jpeg"
         alt="Who we are"
@@ -113,7 +69,7 @@ const JobsPage = ({
         Join The Pinnacle Project in our monthly campaigns, each with a specific focus. From education to the environment, health, and community well-being, we tackle different goals each month. These initiatives are tailored to address specific needs within our community, making it easy for you to engage with causes that matter most to you. By participating in these impactful campaigns, you contribute to the overall progress of our community. Whether you're passionate about learning, sustainability, or health, there's a monthly opportunity for you to make a meaningful difference. Let's work together, one focused campaign at a time, to create positive and lasting change within our community.
         </p> </div></div>
       <JobListings />
-       <div className="flex flex-col md:flex-row items-center p-10 bg-indigo-600 text-white">
+       <div className="flex flex-col md:flex-row items-center p-10  bg-gradient-to-br from-black to-gray-500 text-white">
             {/* Text Section - Now on the Left */}
             <div className="text-left max-w-xl md:mr-10">
               <h1 className="text-3xl font-bold">Getting Involved & Volunteering</h1>
@@ -127,7 +83,7 @@ const JobsPage = ({
               <Link
                to = "/Voluteer&Parthership"
                 
-                className="mt-6 inline-block bg-white text-indigo-600 font-semibold px-6 py-3 rounded-xl shadow-lg hover:bg-gray-200 transition"
+                className="mt-6 inline-block bg-white text-black font-semibold px-6 py-3 rounded-xl shadow-lg hover:bg-gray-200 transition"
               >
                 Learn More
               </Link>
