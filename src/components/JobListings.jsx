@@ -1,8 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import jobsData from '../../src/jobs.json'; 
-
+import jobsData from '../../src/jobs.json';
 
 const JobListPage = () => {
   const [sortOrder, setSortOrder] = useState('descending');
@@ -21,24 +20,22 @@ const JobListPage = () => {
   }, []);
 
   const sortedJobsByYear = useMemo(() => {
-    // Access the array within the jobsData object
     const jobsArray = jobsData?.jobs || [];
 
     if (jobsArray.length === 0) {
       return [];
     }
-    // Check if the first item has the 'Year' property
     if (typeof jobsArray[0]?.Year === 'undefined') {
       console.warn("Job items in the data lack a 'Year' property (case-sensitive).");
-      return jobsArray; // Return unsorted if 'Year' is missing
+      return jobsArray;
     }
 
     return jobsArray.slice().sort((a, b) => {
       return sortOrder === 'ascending'
-        ? a.Year - b.Year // Ascending: oldest year first
-        : b.Year - a.Year; // Descending: newest year first
+        ? a.Year - b.Year
+        : b.Year - a.Year;
     });
-  }, [sortOrder, jobsData]); // Re-sort when sortOrder or jobsData changes
+  }, [sortOrder, jobsData]);
 
   const toggleJob = (jobId) => {
     setActiveJobId((prev) => (prev === jobId ? null : jobId));
@@ -46,12 +43,10 @@ const JobListPage = () => {
 
   return (
     <main className="flex flex-col justify-center items-center bg-gradient-to-br from-blue-600 to-pink-500">
-      
+
       <div className="custom-background-4 w-full px-auto text-center  lg:pt-10">
         <div className='container mx-auto'>
           <h1 className="text-3xl lg:text-6xl font-bold mb-5 text-white">Campiagns</h1>
-          
-          
         </div>
       </div>
 
@@ -112,6 +107,32 @@ const JobListPage = () => {
                   <p className="text-gray-700 mb-2"><strong className="font-semibold">Date/Type:</strong> {job.type}</p>
                   <p className="text-gray-700 mb-2"><strong className="font-semibold">Location/Charity:</strong> {job.location}</p>
                   <p className="text-gray-700 mb-2"><strong className="font-semibold">Outcome/Salary:</strong> {job.salary}</p>
+                  <div className="mb-2">
+                    <strong className="font-semibold">Images:</strong>
+                    <div className="flex flex-wrap gap-2 mt-1">
+                      {Array.isArray(job.images) && job.images.map((imageUrl, index) => (
+                        <img
+                          key={index}
+                          src={imageUrl}
+                          alt={`${job.title} - Image ${index + 1}`}
+                          className="w-32 h-auto rounded-md shadow-sm"
+                        />
+                      ))}
+                      {!Array.isArray(job.images) && typeof job.images === 'string' && (
+                        <img
+                          src={job.images}
+                          alt={`${job.title} - Image`}
+                          className="w-32 h-auto rounded-md shadow-sm"
+                        />
+                      )}
+                      {Array.isArray(job.images) && job.images.length === 0 && (
+                        <p className="text-gray-500">No images available.</p>
+                      )}
+                      {!Array.isArray(job.images) && typeof job.images !== 'string' && (
+                        <p className="text-gray-500">No images available.</p>
+                      )}
+                    </div>
+                  </div>
                   {/* Removed the 'Learn More' button as 'insta' link is not in JSON */}
                 </motion.div>
               )}
