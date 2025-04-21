@@ -1,14 +1,15 @@
 import { useState, useEffect, useMemo } from 'react';
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import jobsData from '../../src/jobs.json';
+import jobsData from '../../src/jobs.json'; // Make sure this path is correct
 
 const JobListPage = () => {
   const [sortOrder, setSortOrder] = useState('descending');
-  const [windowWidth, setWindowWidth] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(0); // Still included, though not directly used in the layout change
   const [activeJobId, setActiveJobId] = useState(null);
 
   useEffect(() => {
+    // Effect for window width (optional, can be removed if not needed elsewhere)
     if (typeof window !== 'undefined') {
       setWindowWidth(window.innerWidth);
       const handleResize = () => {
@@ -25,15 +26,20 @@ const JobListPage = () => {
     if (jobsArray.length === 0) {
       return [];
     }
-    if (typeof jobsArray[0]?.Year === 'undefined') {
-      console.warn("Job items in the data lack a 'Year' property (case-sensitive).");
-      return jobsArray;
+    // Basic check for 'Year' property existence
+    if (jobsArray.length > 0 && typeof jobsArray[0]?.Year === 'undefined') {
+      console.warn(
+        "Job items in the data might lack a 'Year' property (case-sensitive)."
+      );
+      // Decide how to handle - return unsorted or filter? Returning as is for now.
+      // return jobsArray;
     }
 
-    return jobsArray.slice().sort((a, b) => {
-      return sortOrder === 'ascending'
-        ? a.Year - b.Year
-        : b.Year - a.Year;
+    // Filter out jobs without a valid Year before sorting
+    const filteredJobs = jobsArray.filter(job => typeof job.Year === 'number' && !isNaN(job.Year));
+
+    return filteredJobs.slice().sort((a, b) => {
+      return sortOrder === 'ascending' ? a.Year - b.Year : b.Year - a.Year;
     });
   }, [sortOrder, jobsData]);
 
@@ -42,103 +48,158 @@ const JobListPage = () => {
   };
 
   return (
-    <main className="flex flex-col justify-center items-center bg-gradient-to-br from-blue-600 to-pink-500">
-
-      <div className="custom-background-4 w-full px-auto text-center  lg:pt-10">
-        <div className='container mx-auto'>
-          <h1 className="text-3xl lg:text-6xl font-bold mb-5 text-white">Campiagns</h1>
+    // Main container with gradient background
+    <main className="flex flex-col justify-start items-center min-h-screen bg-gradient-to-br from-blue-600 to-pink-500 py-10">
+      {/* Header Section */}
+      <div className="w-full text-center mb-8 px-4">
+        {/* Using a container for better centering and padding control */}
+        <div className="container mx-auto">
+          <h1 className="text-4xl lg:text-6xl font-bold text-white drop-shadow-md">
+            Campaigns
+          </h1>
         </div>
       </div>
 
-      {/* Sort Buttons */}
-      <div className="flex justify-center space-x-4 my-8">
+      {/* Sort Buttons Section */}
+      <div className="flex justify-center space-x-4 mb-10">
         <button
-          className={`bg-blue-600 text-white px-4 py-2 rounded-xl shadow hover:bg-yellow-700 transition rounded-lg font-semibold ${sortOrder === 'ascending' ? 'button-2' : 'button-3'} transition duration-300 ease-in-out`}
+          // Consistent button styling using Tailwind classes
+          className={`text-white px-5 py-2 rounded-lg shadow font-semibold transition duration-300 ease-in-out transform hover:scale-105 ${
+            sortOrder === 'ascending'
+              ? 'bg-yellow-500 ring-2 ring-yellow-300' // Active state style
+              : 'bg-blue-700 hover:bg-blue-800'      // Inactive state style
+          }`}
           onClick={() => setSortOrder('ascending')}
         >
           Year (Oldest First)
         </button>
         <button
-          className={`bg-blue-600 text-white px-4 py-2 rounded-xl shadow hover:bg-yellow-700 transition rounded-lg font-semibold ${sortOrder === 'descending' ? 'button-2' : 'button-3'} transition duration-300 ease-in-out`}
+          className={`text-white px-5 py-2 rounded-lg shadow font-semibold transition duration-300 ease-in-out transform hover:scale-105 ${
+            sortOrder === 'descending'
+              ? 'bg-yellow-500 ring-2 ring-yellow-300' // Active state style
+              : 'bg-blue-700 hover:bg-blue-800'      // Inactive state style
+          }`}
           onClick={() => setSortOrder('descending')}
         >
           Year (Newest First)
         </button>
       </div>
 
-      {/* Job Dropdowns */}
-      <div className="container grid grid-cols-1 gap-2 my-5 md:w-3/4 px-4 lg:px-0 mx-auto">
+      {/* Job List Section */}
+      {/* Using a container for better width control and centering */}
+      <div className="container grid grid-cols-1 gap-4 md:w-5/6 lg:w-5/6 xl:w-5/6 px-4 mx-auto">
         {sortedJobsByYear.map((job) => (
           <motion.div
             key={job.id}
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            layout
-            className="bg-white rounded-lg p-4 transition duration-300 shadow-md"
+            layout // Enables smooth layout changes during expand/collapse
+            className="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-200" // Added border
           >
-            {/* Job Header */}
+            {/* Job Header (Clickable Area) */}
             <div
-              className="flex justify-between items-center cursor-pointer"
+              className="flex justify-between items-center cursor-pointer p-4 hover:bg-gray-50 transition-colors"
               onClick={() => toggleJob(job.id)}
             >
-              {/* Display job title and year */}
-              <h2 className="text-xl font-semibold text-gray-800">{job.title} <span className='text-sm text-gray-500'>({job.Year})</span></h2>
+              <h2 className="text-xl font-semibold text-gray-800">
+                {job.title}{' '}
+                <span className="text-sm font-normal text-gray-500">
+                  ({job.Year})
+                </span>
+              </h2>
               <motion.span
                 animate={{ rotate: activeJobId === job.id ? 180 : 0 }}
-                className="text-gray-500"
+                className="text-blue-600 text-xl" // Adjusted color and size
               >
-                ▼
+                ▼ {/* Using a simple down arrow */}
               </motion.span>
             </div>
 
-            {/* Dropdown Content */}
+            {/* Dropdown Content (Animated) */}
             <AnimatePresence>
               {activeJobId === job.id && (
                 <motion.div
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: 'auto', opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="overflow-hidden mt-4 border-t pt-4"
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  // Added padding and border-top for separation. Using flex column layout for the inner rectangles.
+                  className="overflow-hidden border-t border-gray-200 px-4 pt-4 pb-5 flex flex-col gap-3 bg-gray-50" // Parent container for detail rectangles
                 >
-                  {/* Display job details */}
-                  <p className="text-gray-700 mb-2"><strong className="font-semibold">Description:</strong> {job.description}</p>
-                  <p className="text-gray-700 mb-2"><strong className="font-semibold">Date/Type:</strong> {job.type}</p>
-                  <p className="text-gray-700 mb-2"><strong className="font-semibold">Location/Charity:</strong> {job.location}</p>
-                  <p className="text-gray-700 mb-2"><strong className="font-semibold">Outcome/Salary:</strong> {job.salary}</p>
-                  <div className="mb-2">
-                    <strong className="font-semibold">Images:</strong>
-                    <div className="flex flex-wrap gap-2 mt-1">
-                      {Array.isArray(job.images) && job.images.map((imageUrl, index) => (
-                        <img
-                          key={index}
-                          src={imageUrl}
-                          alt={`${job.title} - Image ${index + 1}`}
-                          className="w-32 h-auto rounded-md shadow-sm"
-                        />
-                      ))}
-                      {!Array.isArray(job.images) && typeof job.images === 'string' && (
-                        <img
-                          src={job.images}
-                          alt={`${job.title} - Image`}
-                          className="w-32 h-auto rounded-md shadow-sm"
-                        />
-                      )}
-                      {Array.isArray(job.images) && job.images.length === 0 && (
-                        <p className="text-gray-500">No images available.</p>
-                      )}
-                      {!Array.isArray(job.images) && typeof job.images !== 'string' && (
-                        <p className="text-gray-500">No images available.</p>
-                      )}
+                  {/* --- Multiple Rectangles Start Here --- */}
+
+                  {/* Rectangle 1: Description */}
+                  {job.description && (
+                    <div className="bg-white p-3 rounded-md shadow-sm border border-gray-200">
+                      <strong className="font-semibold text-gray-700 block mb-1">
+                        Description:
+                      </strong>
+                      <p className="text-gray-600 text-sm">{job.description}</p>
                     </div>
-                  </div>
-                  {/* Removed the 'Learn More' button as 'insta' link is not in JSON */}
+                  )}
+
+                  {/* Rectangle 2: Details (Type & Location) */}
+                  {(job.type || job.location) && (
+                     <div className="bg-white p-3 rounded-md shadow-sm border border-gray-200">
+                       {job.type && <p className="text-gray-600 text-sm mb-1"><strong className="font-semibold text-gray-700">Date/Type:</strong> {job.type}</p>}
+                       {job.location && <p className="text-gray-600 text-sm"><strong className="font-semibold text-gray-700">Location/Charity:</strong> {job.location}</p>}
+                     </div>
+                  )}
+
+
+                  {/* Rectangle 3: Outcome/Salary */}
+                  {job.salary && (
+                    <div className="bg-white p-3 rounded-md shadow-sm border border-gray-200">
+                      <p className="text-gray-600 text-sm">
+                        <strong className="font-semibold text-gray-700">
+                          Outcome/Salary:
+                        </strong>{' '}
+                        {job.salary}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Rectangle 4: Images */}
+                  {job.images && (job.images.length > 0 || typeof job.images === 'string') && (
+                    <div className="bg-white p-3 rounded-md shadow-sm border border-gray-200">
+                      <strong className="font-semibold text-gray-700 block mb-2">
+                        Images:
+                      </strong>
+                      <div className="flex flex-wrap gap-2">
+                        {/* Handles both array and single string images */}
+                        {Array.isArray(job.images) ? (
+                          job.images.map((imageUrl, index) => (
+                            <img
+                              key={index}
+                              src={imageUrl}
+                              alt={`${job.title} - Image ${index + 1}`}
+                              className="w-28 h-28 object-cover rounded border border-gray-300 shadow-sm" // Fixed size, object-cover
+                            />
+                          ))
+                        ) : typeof job.images === 'string' ? (
+                          <img
+                            src={job.images}
+                            alt={`${job.title} - Image`}
+                            className="w-28 h-28 object-cover rounded border border-gray-300 shadow-sm"
+                          />
+                        ) : null}
+                      </div>
+                    </div>
+                  )}
+
+
                 </motion.div>
               )}
             </AnimatePresence>
           </motion.div>
         ))}
+         {/* Message if no jobs */}
+         {sortedJobsByYear.length === 0 && (
+            <div className="text-center text-white py-10 col-span-full">
+                <p>No campaigns found or data is loading.</p>
+            </div>
+         )}
       </div>
     </main>
   );
