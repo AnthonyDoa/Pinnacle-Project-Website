@@ -1,6 +1,6 @@
 import React from 'react';
 import FQASection from '../components/FQASection';
-import VoluteerForm from '../components/VoluteerForm';
+import VolunteerForm from '../components/VolunteerForm';
 import { motion } from 'framer-motion';
 import { Link } from "react-router-dom";
 import bannerImage from "../assets/images/Banner.jpeg";
@@ -62,7 +62,7 @@ const VolunteeringPartnerships = () => {
         Join The Pinnacle Project as a volunteer and make a direct impact. Opportunities in community outreach, environment, and education await you. Your involvement sparks positive change and creates a lasting difference. Be part of a community-driven initiative, contribute your skills, and witness the meaningful impact of your efforts. Make a choice that matters. Volunteer with The Pinnacle Project and be a catalyst for positive transformation in your community and beyond.
         </p> </div></div>
 
-        <VoluteerForm/>
+        <VolunteerForm/>
       <FQASection />
 
       <div className="flex flex-col md:flex-row items-center p-10  bg-gradient-to-br from-black to-gray-500 text-white">
