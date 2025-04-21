@@ -15,8 +15,6 @@ const HomePage = () => {
       <Hero />
       <HomeCards />
       <Qoute />
-      <JobListings isHome={true} />
-      <ViewAllJobs />
       <Ourteam />
       <Voluteer />
       <Partherships />
