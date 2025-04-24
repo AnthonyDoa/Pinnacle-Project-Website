@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import CampaignsData from '../Campiagns.json'; // Make sure this path is correct
+import CampaignsData from '../Campiagns.json';
 
 const CampiagnsListings = () => {
   const [sortOrder, setSortOrder] = useState('descending');
@@ -77,9 +77,9 @@ const CampiagnsListings = () => {
       </div>
 
       <div className="container grid grid-cols-1 gap-4 md:w-5/6 lg:w-5/6 xl:w-5/6 px-4 mx-auto">
-        {sortedCampaignByYear.map((job) => (
+        {sortedCampaignByYear.map((campaign) => (
           <motion.div
-            key={job.id}
+            key={campaign.id}
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
@@ -88,16 +88,16 @@ const CampiagnsListings = () => {
           >
             <div
               className="flex justify-between items-center cursor-pointer p-4 hover:bg-gray-50 transition-colors"
-              onClick={() => toggleCampaign(job.id)}
+              onClick={() => toggleCampaign(campaign.id)}
             >
               <h2 className="text-xl font-semibold text-gray-800">
-                {job.title}{' '}
+                {campaign.title}{' '}
                 <span className="text-sm font-normal text-gray-500">
-                  ({job.Year})
+                  ({campaign.Year})
                 </span>
               </h2>
               <motion.span
-                animate={{ rotate: activeCampaignId === job.id ? 180 : 0 }}
+                animate={{ rotate: activeCampaignId === campaign.id ? 180 : 0 }}
                 className="text-blue-600 text-xl"
               >
                 ▼
@@ -105,7 +105,7 @@ const CampiagnsListings = () => {
             </div>
 
             <AnimatePresence>
-              {activeCampaignId === job.id && (
+              {activeCampaignId === campaign.id && (
                 <motion.div
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: 'auto', opacity: 1 }}
@@ -113,52 +113,52 @@ const CampiagnsListings = () => {
                   transition={{ duration: 0.3, ease: 'easeInOut' }}
                   className="overflow-hidden border-t border-gray-200 px-4 pt-4 pb-5 flex flex-col gap-3 bg-gray-50"
                 >
-                  {job.description && (
+                  {campaign.description && (
                     <div className="bg-white p-3 rounded-md shadow-sm border border-gray-200">
                       <strong className="font-semibold text-gray-700 block mb-1">
                         Description:
                       </strong>
-                      <p className="text-gray-600 text-sm">{job.description}</p>
+                      <p className="text-gray-600 text-sm">{campaign.description}</p>
                     </div>
                   )}
 
-                  {(job.type || job.location) && (
+                  {(campaign.Date || campaign.Charity) && (
                     <div className="bg-white p-3 rounded-md shadow-sm border border-gray-200">
-                      {job.type && <p className="text-gray-600 text-sm mb-1"><strong className="font-semibold text-gray-700">Date/Type:</strong> {job.type}</p>}
-                      {job.location && <p className="text-gray-600 text-sm"><strong className="font-semibold text-gray-700">Location/Charity:</strong> {job.location}</p>}
+                      {campaign.Date && <p className="text-gray-600 text-sm mb-1"><strong className="font-semibold text-gray-700">Date/Date:</strong> {campaign.Date}</p>}
+                      {campaign.Charity && <p className="text-gray-600 text-sm"><strong className="font-semibold text-gray-700">Charity/Charity:</strong> {campaign.Charity}</p>}
                     </div>
                   )}
 
-                  {job.salary && (
+                  {campaign.Raised && (
                     <div className="bg-white p-3 rounded-md shadow-sm border border-gray-200">
                       <p className="text-gray-600 text-sm">
                         <strong className="font-semibold text-gray-700">
-                          Outcome/Salary:
+                         
                         </strong>{' '}
-                        {job.salary}
+                        {campaign.Raised}
                       </p>
                     </div>
                   )}
 
-                  {(job.images && job.images.length > 0) || typeof job.images === 'string' ? (
+                  {(campaign.images && campaign.images.length > 0) || typeof campaign.images === 'string' ? (
                     <div className="bg-white p-3 rounded-md shadow-sm border border-gray-200">
                       <strong className="font-semibold text-gray-700 block mb-2">
                         Images:
                       </strong>
                       <div className="flex flex-wrap gap-2">
-                        {Array.isArray(job.images) ? (
-                          job.images.map((imageUrl, index) => (
+                        {Array.isArray(campaign.images) ? (
+                          campaign.images.map((imageUrl, index) => (
                             <img
                               key={index}
                               src={imageUrl}
-                              alt={`${job.title} - Image ${index + 1}`}
+                              alt={`${campaign.title} - Image ${index + 1}`}
                               className="w-28 h-28 object-cover rounded border border-gray-300 shadow-sm"
                             />
                           ))
-                        ) : typeof job.images === 'string' ? (
+                        ) : typeof campaign.images === 'string' ? (
                           <img
-                            src={job.images}
-                            alt={`${job.title} - Image`}
+                            src={campaign.images}
+                            alt={`${campaign.title} - Image`}
                             className="w-28 h-28 object-cover rounded border border-gray-300 shadow-sm"
                           />
                         ) : null}
