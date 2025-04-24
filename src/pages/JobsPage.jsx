@@ -1,14 +1,13 @@
-import JobListings from '../components/JobListings';
+import CampiagnsListings from '../components/CampiagnsListings';
 import ImageTrack from '../components/ImageTrack';
 import { Link } from "react-router-dom";
-import bannerImage from "../assets/images/Banner.jpeg";
 import { motion } from 'framer-motion';
 
 
 
 
 
-const JobsPage = ({
+const CampiagnsPage = ({
 
 }) => {
   return (
@@ -68,7 +67,7 @@ const JobsPage = ({
         <p className="mt-4 text-lg">
         Join The Pinnacle Project in our monthly campaigns, each with a specific focus. From education to the environment, health, and community well-being, we tackle different goals each month. These initiatives are tailored to address specific needs within our community, making it easy for you to engage with causes that matter most to you. By participating in these impactful campaigns, you contribute to the overall progress of our community. Whether you're passionate about learning, sustainability, or health, there's a monthly opportunity for you to make a meaningful difference. Let's work together, one focused campaign at a time, to create positive and lasting change within our community.
         </p> </div></div>
-      <JobListings />
+      <CampiagnsListings />
        
           <div className="bg-black text-white min-h-screen">
   <ImageTrack />
@@ -112,7 +111,7 @@ const JobsPage = ({
   );
 };
 
-export default JobsPage;
+export default CampiagnsPage;
 
 
 
