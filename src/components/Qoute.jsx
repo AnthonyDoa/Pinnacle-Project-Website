@@ -5,9 +5,8 @@ const QuoteCard = styled.div`
   background-color:rgba(10, 133, 167, 0.43);
   border-radius: 8px;
   padding: 3rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  margin: 2rem auto;
-  max-width: 768px;
+  box-shadow: 0 4px 12px rgba(19, 18, 18, 0.08);
+  max-width: 10000px;
   text-align: center;
 `;
 
@@ -28,6 +27,7 @@ const Title = styled.h3`
   color: #2c5282; /* A nice blue */
   font-size: 1.5rem;
   margin-bottom: 1rem;
+  text-align: center
 `;
 
 const FramedQuote = () => {
