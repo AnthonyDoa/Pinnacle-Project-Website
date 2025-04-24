@@ -1,12 +1,12 @@
 import { useState, useEffect, useMemo } from 'react';
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import jobsData from '../../src/jobs.json'; // Make sure this path is correct
+import jobsData from '../jobs.json'; // Make sure this path is correct
 
-const JobListPage = () => {
+const CampaignListPage = () => {
   const [sortOrder, setSortOrder] = useState('descending');
   const [windowWidth, setWindowWidth] = useState(0); // Still included, though not directly used in the layout change
-  const [activeJobId, setActiveJobId] = useState(null);
+  const [activeCampaignId, setActiveCampaignId] = useState(null);
 
   useEffect(() => {
     // Effect for window width (optional, can be removed if not needed elsewhere)
@@ -20,14 +20,14 @@ const JobListPage = () => {
     }
   }, []);
 
-  const sortedJobsByYear = useMemo(() => {
-    const jobsArray = jobsData?.jobs || [];
+  const sortedCampaignByYear = useMemo(() => {
+    const CampaignsArray = jobsData?.jobs || [];
 
-    if (jobsArray.length === 0) {
+    if (CampaignsArray.length === 0) {
       return [];
     }
     // Basic check for 'Year' property existence
-    if (jobsArray.length > 0 && typeof jobsArray[0]?.Year === 'undefined') {
+    if (CampaignsArray.length > 0 && typeof CampaignsArray[0]?.Year === 'undefined') {
       console.warn(
         "Job items in the data might lack a 'Year' property (case-sensitive)."
       );
@@ -36,15 +36,15 @@ const JobListPage = () => {
     }
 
     // Filter out jobs without a valid Year before sorting
-    const filteredJobs = jobsArray.filter(job => typeof job.Year === 'number' && !isNaN(job.Year));
+    const filteredCampaigns = CampaignsArray.filter(job => typeof job.Year === 'number' && !isNaN(job.Year));
 
-    return filteredJobs.slice().sort((a, b) => {
+    return filteredCampaigns.slice().sort((a, b) => {
       return sortOrder === 'ascending' ? a.Year - b.Year : b.Year - a.Year;
     });
   }, [sortOrder, jobsData]);
 
-  const toggleJob = (jobId) => {
-    setActiveJobId((prev) => (prev === jobId ? null : jobId));
+  const toggleCampaign = (jobId) => {
+    setActiveCampaignId((prev) => (prev === jobId ? null : jobId));
   };
 
   return (
@@ -88,7 +88,7 @@ const JobListPage = () => {
       {/* Job List Section */}
       {/* Using a container for better width control and centering */}
       <div className="container grid grid-cols-1 gap-4 md:w-5/6 lg:w-5/6 xl:w-5/6 px-4 mx-auto">
-        {sortedJobsByYear.map((job) => (
+        {sortedCampaignByYear.map((job) => (
           <motion.div
             key={job.id}
             initial={{ opacity: 0, y: -10 }}
@@ -100,7 +100,7 @@ const JobListPage = () => {
             {/* Job Header (Clickable Area) */}
             <div
               className="flex justify-between items-center cursor-pointer p-4 hover:bg-gray-50 transition-colors"
-              onClick={() => toggleJob(job.id)}
+              onClick={() => toggleCampaign(job.id)}
             >
               <h2 className="text-xl font-semibold text-gray-800">
                 {job.title}{' '}
@@ -109,7 +109,7 @@ const JobListPage = () => {
                 </span>
               </h2>
               <motion.span
-                animate={{ rotate: activeJobId === job.id ? 180 : 0 }}
+                animate={{ rotate: activeCampaignId === job.id ? 180 : 0 }}
                 className="text-blue-600 text-xl" // Adjusted color and size
               >
                 ▼ {/* Using a simple down arrow */}
@@ -118,7 +118,7 @@ const JobListPage = () => {
 
             {/* Dropdown Content (Animated) */}
             <AnimatePresence>
-              {activeJobId === job.id && (
+              {activeCampaignId === job.id && (
                 <motion.div
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: 'auto', opacity: 1 }}
@@ -195,7 +195,7 @@ const JobListPage = () => {
           </motion.div>
         ))}
          {/* Message if no jobs */}
-         {sortedJobsByYear.length === 0 && (
+         {sortedCampaignByYear.length === 0 && (
             <div className="text-center text-white py-10 col-span-full">
                 <p>No campaigns found or data is loading.</p>
             </div>
@@ -205,4 +205,4 @@ const JobListPage = () => {
   );
 };
 
-export default JobListPage;
+export default CampaignListPage;
