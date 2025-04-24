@@ -22,7 +22,7 @@ const Contact = ({ addJobSubmit }) => {
   };
 
   return (
-    <section className='bg-gradient-to-br from-purple-600 to-green-600'>
+    <section className='bg-black'>
       <div className='container max-w-29xl py-24 flex flex-col md:flex-row-reverse '>
         {/* Right Side Text */}
         <div className='md:w-1/2 text-white px-6 mb-6 md:mb-0'>
