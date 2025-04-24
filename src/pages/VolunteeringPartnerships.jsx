@@ -11,7 +11,7 @@ const VolunteeringPartnerships = () => {
       <div
   className="hero-container flex flex-col items-left  pt-20"
   style={{
-    backgroundImage: 'url("https://images.unsplash.com/photo-1744762561513-6691932920fb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNXx8fGVufDB8fHx8fA%3D%3D")',
+    backgroundImage: 'url("https://plus.unsplash.com/premium_photo-1675860537299-97cee9f04d8a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGJlYWNoc3xlbnwwfHwwfHx8MA%3D%3D")',
     backgroundSize: 'cover',
     backgroundPosition: 'left',
     minHeight: '60vh', /* Adjust this value as needed */
@@ -23,7 +23,7 @@ const VolunteeringPartnerships = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: 'easeInOut' }}
-        className="text-3xl sm:text-5xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500"
+        className="text-3xl sm:text-5xl lg:text-7xl font-bold text-transparent bg-clip-text bg-white"
       >
         Volunteering and Partnerships
         
@@ -35,7 +35,7 @@ const VolunteeringPartnerships = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: 'easeInOut' }}
-        className=" text-xl sm:text-3xl lg:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500"
+        className=" text-xl sm:text-3xl lg:text-3xl font-bold text-transparent bg-clip-text bg-white"
       >
        Work with our organization and explore ways you can get involved in your community, while making a difference.
       </motion.h2>
@@ -52,7 +52,7 @@ const VolunteeringPartnerships = () => {
 
 <div className="flex flex-col md:flex-row items-center p-10 bg-gradient-to-br from-black to-gray-500 text-white">
       <img
-        src="/assets/images/Banner.jpeg"
+        src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZG9uYXRlfGVufDB8fDB8fHww"
         alt="Who we are"
         className="w-96 h-auto object-cover rounded-lg shadow-lg md:mr-10"
       />
@@ -89,7 +89,7 @@ Contact Community Outreach
             
                   {/* Image Section - Now on the Right */}
                   <img
-                    src={bannerImage}
+                    src="https://images.unsplash.com/photo-1707924507299-2b5309dd755d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bG90cyUyMG9mJTIwcGVvcGxlJTIwam9pbmluZyUyMHRvZ2V0aGVyfGVufDB8fDB8fHww"
                     alt="Who we are"
                     className="w-96 h-auto object-cover rounded-lg shadow-lg md:ml-10"
                   />
