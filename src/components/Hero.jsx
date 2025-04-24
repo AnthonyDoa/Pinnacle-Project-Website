@@ -11,7 +11,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeInOut' }}
-          className="text-3xl sm:text-5xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500"
+          className="text-3xl sm:text-5xl lg:text-7xl font-bold text-transparent bg-clip-text bg-white"
         >
           The Pinnacle Project
         </motion.h1>
@@ -42,7 +42,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeInOut' }}
-          className=" text-xl sm:text-3xl lg:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500"
+          className=" text-xl sm:text-3xl lg:text-3xl font-bold text-transparent bg-clip-text bg-white"
         >
           Making an Impact and Changing Lives through Initiatives and Campaigns in the Mississauga Community
         </motion.h2>
