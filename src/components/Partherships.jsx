@@ -5,7 +5,7 @@ const Partherships = () => {
   return (
     <div className="flex flex-col md:flex-row items-center p-10 bg-gradient-to-br from-blue-600 to-green-100 text-white">
       <img
-        src="/assets/images/Banner.jpeg"
+        src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y2hhcml0eXxlbnwwfHwwfHx8MA%3D%3D"
         alt="Who we are"
         className="w-96 h-auto object-cover rounded-lg shadow-lg md:mr-10"
       />
