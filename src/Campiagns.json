@@ -1,12 +1,12 @@
 {
-  "jobs": [
+  "Campiagns": [
     {
       "id": "1",
       "title": "Warm Wishes",
-      "type": "April 2025",
+      "Date": "April 2025",
       "description": "The Pinncale Project is collbrating with Warm Wishes",
-      "location": "Charity: Unknown",
-      "salary": "Unknown",
+      "Chairty": "Charity: Unknown",
+      "Raised": "Unknown",
       "Year": 2025,
       "images": [
         "https://plus.unsplash.com/premium_photo-1672743593121-ddc2fee0e62b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8",
@@ -18,10 +18,10 @@
     {
       "id": "2",
       "title": "Campaign Pitch Hoilday Market",
-      "type": "Dec 2 - Dec 11 2025",
+      "Date": "Dec 2 - Dec 11 2025",
       "description": "A December campaign created by the general members of the Pinnacle Project. The Pinnacle Project hosted a hoilday market selling a variey of christmas items (Peppermint Candy Cane, Peach Candy Cane, Hot Chocolate, Cookies,Marshmallows) ",
-      "location": "Charity: World Vision",
-      "salary": "Raised: $200+",
+      "Chairty": "Charity: World Vision",
+      "Raised": "Raised: $200+",
       "Year": 2025,
       "images": [
         "https://plus.unsplash.com/premium_photo-1672743593121-ddc2fee0e62b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8",
@@ -33,10 +33,10 @@
     {
       "id": "3",
       "title": "We Scare Hunger Event with Minga",
-      "type": "Oct 28 - Nov 1 2025",
+      "Date": "Oct 28 - Nov 1 2025",
       "description": "On Halloween night, volunteers will be going door-to-door asking for non-perishable food items. Minga has successfully ran the event for the past 10 years, but their total efforts has decreased.",
-      "location": "Charity: Eden Food Bank",
-      "salary": "Raised: 200+ pounds of food",
+      "Chairty": "Charity: Eden Food Bank",
+      "Raised": "Raised: 200+ pounds of food",
       "Year": 2025,
       "images": [
         "https://plus.unsplash.com/premium_photo-1672743593121-ddc2fee0e62b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8",
@@ -48,10 +48,10 @@
     {
       "id": "4",
       "title": "Save The Children",
-      "type": "May 2024",
-      "location": "Charity: Save The Children",
+      "Date": "May 2024",
+      "Chairty": "Charity: Save The Children",
       "description": "We work to safeguard children from poverty. Our team has created the iniative to provide support and resources to help create safe environments for vulnerable children in the Regional Municipality of Peel.",
-      "salary": "Raised: $400+",
+      "Raised": "Raised: $400+",
       "Year": 2024,
       "images": [
         "https://plus.unsplash.com/premium_photo-1672743593121-ddc2fee0e62b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8",
@@ -63,10 +63,10 @@
     {
       "id": "5",
       "title": "Eden Food For Change",
-      "type": " April 23rd - April 30th 2024",
-      "location": "Charity: Eden Food Bank",
+      "Date": " April 23rd - April 30th 2024",
+      "Chairty": "Charity: Eden Food Bank",
       "description": "With a tremendous amount of dilligence, our team was able to deliver over 100 pounds of food to Eden Food for Change which has made a signficant impact to those who are in need. ",
-      "salary": "Raised: 100 pounds+ of food",
+      "Raised": "Raised: 100 pounds+ of food",
       "Year": 2024,
       "images": [
         "https://plus.unsplash.com/premium_photo-1672743593121-ddc2fee0e62b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8",
@@ -78,10 +78,10 @@
     {
       "id": "6",
       "title": "Community Outreach Programs (Care Packages)",
-      "type": "March 2024 ",
-      "location": "Charity: Peel Family Shelter ",
+      "Date": "March 2024 ",
+      "Chairty": "Charity: Peel Family Shelter ",
       "description": "In our March Campaign, The Pinnacle Project raised over $300 and made 50 care packages towards the Peel Family Shelter.Care packages consisted of essentialitems such as socks, water, non-perishable food items, toothbrushes,toothpaste, and skin care products. ",
-      "salary": "Rasied: $300+",
+      "Raised": "Rasied: $300+",
       "Year": 2024,
       "images": [
         "https://plus.unsplash.com/premium_photo-1672743593121-ddc2fee0e62b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8",
