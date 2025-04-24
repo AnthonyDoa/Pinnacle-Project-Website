@@ -16,9 +16,9 @@ const teamMembers = [
 
 const OurTeam = () => {
   return (
-    <div className="p-10">
+    <div className="p-10 bg-gray-700">
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-3xl font-bold">Meet Our Team</h1>
+        <h1 className="text-3xl font-bold text-white">Meet Our Team</h1>
         <Link
           to = "/OurteamFull"
           className="bg-blue-600 text-white px-4 py-2 rounded-xl shadow hover:bg-blue-700 transition"
