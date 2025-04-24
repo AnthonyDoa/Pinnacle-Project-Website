@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const teamMembers = [
   {
-    name: "Aleena Ali",
+    name: "Meesam Ali",
     position: "Co-president",
     image: "https://via.placeholder.com/300x400", // Replace with actual image URL
   },
