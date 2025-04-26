@@ -1,9 +1,9 @@
 import { useState, useEffect, useMemo } from 'react';
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import CampaignsData from '../Campiagns.json';
+import CampaignsData from '../Campaigns.json';
 
-const CampiagnsListings = () => {
+const CampaignsListings = () => {
   const [sortOrder, setSortOrder] = useState('descending');
   const [windowWidth, setWindowWidth] = useState(0);
   const [activeCampaignId, setActiveCampaignId] = useState(null);
@@ -20,7 +20,7 @@ const CampiagnsListings = () => {
   }, []);
 
   const sortedCampaignByYear = useMemo(() => {
-    const campaignsArray = CampaignsData?.Campiagns || [];
+    const campaignsArray = CampaignsData?.Campaigns || [];
 
     if (campaignsArray.length === 0) {
       return [];
@@ -180,4 +180,4 @@ const CampiagnsListings = () => {
   );
 };
 
-export default CampiagnsListings;
+export default CampaignsListings;
