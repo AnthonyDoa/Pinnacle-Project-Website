@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
 import HomePage from './pages/HomePage';
-import CampiagnsPage from './pages/CampiagnsPage';
+import CampaignsPage from './pages/CampaignsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import OurteamFull from './pages/OurteamFull';
 import VolunteeringPartnerships from './pages/VolunteeringPartnerships';
@@ -19,7 +19,7 @@ const App = () => {
     createRoutesFromElements(
       <Route path='/' element={<MainLayout />}>
         <Route index element={<HomePage />} />
-        <Route path='/Campiagns' element={<CampiagnsPage />} />
+        <Route path='/Campaigns' element={<CampaignsPage />} />
         <Route path='*' element={<NotFoundPage />} />
         <Route path='/OurteamFull' element={<OurteamFull />} />
         <Route path='/VolunteeringPartnerships' element={<VolunteeringPartnerships />} />
