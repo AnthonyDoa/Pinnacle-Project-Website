@@ -23,8 +23,8 @@ const Navbar = () => {
                 <NavLink to='/' className={linkClass}>
                   Home
                 </NavLink>
-                <NavLink to='/Campiagns' className={linkClass}>
-                  Campiagns
+                <NavLink to='/Campaigns' className={linkClass}>
+                  Campaigns
                 </NavLink>
                 <NavLink to='/OurteamFull' className={linkClass}>
                   Our Team
