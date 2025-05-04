@@ -1,13 +1,28 @@
-import { useState, useEffect, useMemo } from 'react';
-import React from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import CampaignsData from '../Campaigns.json';
 
 const CampaignsListings = () => {
   const [sortOrder, setSortOrder] = useState('descending');
   const [windowWidth, setWindowWidth] = useState(0);
   const [activeCampaignId, setActiveCampaignId] = useState(null);
+  const [campaignData, setCampaignData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  // Fetch campaign data from public/Campaigns.json
+  useEffect(() => {
+    fetch('/Campaigns.json')
+      .then((res) => res.json())
+      .then((data) => {
+        setCampaignData(data.Campaigns || []);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error('Error fetching campaign data:', err);
+        setLoading(false);
+      });
+  }, []);
+
+  // Handle window width (for responsive needs if used later)
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setWindowWidth(window.innerWidth);
@@ -19,25 +34,22 @@ const CampaignsListings = () => {
     }
   }, []);
 
+  // Sort campaigns based on year and sortOrder
   const sortedCampaignByYear = useMemo(() => {
-    const campaignsArray = CampaignsData?.Campaigns || [];
+    if (campaignData.length === 0) return [];
 
-    if (campaignsArray.length === 0) {
-      return [];
+    if (typeof campaignData[0]?.Year === 'undefined') {
+      console.warn("Some campaign items might lack a 'Year' property.");
     }
 
-    if (campaignsArray.length > 0 && typeof campaignsArray[0]?.Year === 'undefined') {
-      console.warn(
-        "Campaign items in the data might lack a 'Year' property (case-sensitive)."
-      );
-    }
+    const filteredCampaigns = campaignData.filter(
+      (c) => typeof c?.Year === 'number' && !isNaN(c.Year)
+    );
 
-    const filteredCampaigns = campaignsArray.filter(campaign => typeof campaign?.Year === 'number' && !isNaN(campaign.Year));
-
-    return filteredCampaigns.slice().sort((a, b) => {
-      return sortOrder === 'ascending' ? a.Year - b.Year : b.Year - a.Year;
-    });
-  }, [sortOrder, CampaignsData]);
+    return filteredCampaigns.slice().sort((a, b) =>
+      sortOrder === 'ascending' ? a.Year - b.Year : b.Year - a.Year
+    );
+  }, [sortOrder, campaignData]);
 
   const toggleCampaign = (campaignId) => {
     setActiveCampaignId((prev) => (prev === campaignId ? null : campaignId));
@@ -76,106 +88,120 @@ const CampaignsListings = () => {
         </button>
       </div>
 
-      <div className="container grid grid-cols-1 gap-4 md:w-5/6 lg:w-5/6 xl:w-5/6 px-4 mx-auto">
-        {sortedCampaignByYear.map((campaign) => (
-          <motion.div
-            key={campaign.id}
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            layout
-            className="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-200"
-          >
-            <div
-              className="flex justify-between items-center cursor-pointer p-4 hover:bg-gray-50 transition-colors"
-              onClick={() => toggleCampaign(campaign.id)}
+      {loading ? (
+        <div className="text-white text-center py-6">Loading campaigns...</div>
+      ) : (
+        <div className="container grid grid-cols-1 gap-4 md:w-5/6 lg:w-5/6 xl:w-5/6 px-4 mx-auto">
+          {sortedCampaignByYear.map((campaign) => (
+            <motion.div
+              key={campaign.id}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              layout
+              className="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-200"
             >
-              <h2 className="text-xl font-semibold text-gray-800">
-                {campaign.title}{' '}
-                <span className="text-sm font-normal text-gray-500">
-                  ({campaign.Year})
-                </span>
-              </h2>
-              <motion.span
-                animate={{ rotate: activeCampaignId === campaign.id ? 180 : 0 }}
-                className="text-blue-600 text-xl"
+              <div
+                className="flex justify-between items-center cursor-pointer p-4 hover:bg-gray-50 transition-colors"
+                onClick={() => toggleCampaign(campaign.id)}
               >
-                ▼
-              </motion.span>
-            </div>
-
-            <AnimatePresence>
-              {activeCampaignId === campaign.id && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3, ease: 'easeInOut' }}
-                  className="overflow-hidden border-t border-gray-200 px-4 pt-4 pb-5 flex flex-col gap-3 bg-gray-50"
+                <h2 className="text-xl font-semibold text-gray-800">
+                  {campaign.title}{' '}
+                  <span className="text-sm font-normal text-gray-500">
+                    ({campaign.Year})
+                  </span>
+                </h2>
+                <motion.span
+                  animate={{ rotate: activeCampaignId === campaign.id ? 180 : 0 }}
+                  className="text-blue-600 text-xl"
                 >
-                  {campaign.description && (
-                    <div className="bg-white p-3 rounded-md shadow-sm border border-gray-200">
-                      <strong className="font-semibold text-gray-700 block mb-1">
-                        Description:
-                      </strong>
-                      <p className="text-gray-600 text-sm">{campaign.description}</p>
-                    </div>
-                  )}
+                  ▼
+                </motion.span>
+              </div>
 
-                  {(campaign.Date || campaign.Charity) && (
-                    <div className="bg-white p-3 rounded-md shadow-sm border border-gray-200">
-                      {campaign.Date && <p className="text-gray-600 text-sm mb-1"><strong className="font-semibold text-gray-700">Date/Date:</strong> {campaign.Date}</p>}
-                      {campaign.Charity && <p className="text-gray-600 text-sm"><strong className="font-semibold text-gray-700">Charity/Charity:</strong> {campaign.Charity}</p>}
-                    </div>
-                  )}
+              <AnimatePresence>
+                {activeCampaignId === campaign.id && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    className="overflow-hidden border-t border-gray-200 px-4 pt-4 pb-5 flex flex-col gap-3 bg-gray-50"
+                  >
+                    {campaign.description && (
+                      <div className="bg-white p-3 rounded-md shadow-sm border border-gray-200">
+                        <strong className="font-semibold text-gray-700 block mb-1">
+                          Description:
+                        </strong>
+                        <p className="text-gray-600 text-sm">{campaign.description}</p>
+                      </div>
+                    )}
 
-                  {campaign.Raised && (
-                    <div className="bg-white p-3 rounded-md shadow-sm border border-gray-200">
-                      <p className="text-gray-600 text-sm">
-                        <strong className="font-semibold text-gray-700">
-                         
-                        </strong>{' '}
-                        {campaign.Raised}
-                      </p>
-                    </div>
-                  )}
+                    {(campaign.Date || campaign.Charity) && (
+                      <div className="bg-white p-3 rounded-md shadow-sm border border-gray-200">
+                        {campaign.Date && (
+                          <p className="text-gray-600 text-sm mb-1">
+                            <strong className="font-semibold text-gray-700">Date:</strong>{' '}
+                            {campaign.Date}
+                          </p>
+                        )}
+                        {campaign.Charity && (
+                          <p className="text-gray-600 text-sm">
+                            <strong className="font-semibold text-gray-700">Charity:</strong>{' '}
+                            {campaign.Charity}
+                          </p>
+                        )}
+                      </div>
+                    )}
 
-                  {(campaign.images && campaign.images.length > 0) || typeof campaign.images === 'string' ? (
-                    <div className="bg-white p-3 rounded-md shadow-sm border border-gray-200">
-                      <strong className="font-semibold text-gray-700 block mb-2">
-                        Images:
-                      </strong>
-                      <div className="flex flex-wrap gap-2">
-                        {Array.isArray(campaign.images) ? (
-                          campaign.images.map((imageUrl, index) => (
+                    {campaign.Raised && (
+                      <div className="bg-white p-3 rounded-md shadow-sm border border-gray-200">
+                        <p className="text-gray-600 text-sm">
+                          <strong className="font-semibold text-gray-700">Raised:</strong>{' '}
+                          {campaign.Raised}
+                        </p>
+                      </div>
+                    )}
+
+                    {(campaign.images && campaign.images.length > 0) ||
+                    typeof campaign.images === 'string' ? (
+                      <div className="bg-white p-3 rounded-md shadow-sm border border-gray-200">
+                        <strong className="font-semibold text-gray-700 block mb-2">
+                          Images:
+                        </strong>
+                        <div className="flex flex-wrap gap-2">
+                          {Array.isArray(campaign.images) ? (
+                            campaign.images.map((imageUrl, index) => (
+                              <img
+                                key={index}
+                                src={imageUrl}
+                                alt={`${campaign.title} - Image ${index + 1}`}
+                                className="w-28 h-28 object-cover rounded border border-gray-300 shadow-sm"
+                              />
+                            ))
+                          ) : typeof campaign.images === 'string' ? (
                             <img
-                              key={index}
-                              src={imageUrl}
-                              alt={`${campaign.title} - Image ${index + 1}`}
+                              src={campaign.images}
+                              alt={`${campaign.title} - Image`}
                               className="w-28 h-28 object-cover rounded border border-gray-300 shadow-sm"
                             />
-                          ))
-                        ) : typeof campaign.images === 'string' ? (
-                          <img
-                            src={campaign.images}
-                            alt={`${campaign.title} - Image`}
-                            className="w-28 h-28 object-cover rounded border border-gray-300 shadow-sm"
-                          />
-                        ) : null}
+                          ) : null}
+                        </div>
                       </div>
-                    </div>
-                  ) : null}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
-        ))}
-        {sortedCampaignByYear.length === 0 && (
-          <div className="text-center text-white py-10 col-span-full">
-            <p>No campaigns found or data is loading.</p>
-          </div>
-        )}
-      </div>
+                    ) : null}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          ))}
+
+          {sortedCampaignByYear.length === 0 && !loading && (
+            <div className="text-center text-white py-10 col-span-full">
+              <p>No campaigns found or data is loading.</p>
+            </div>
+          )}
+        </div>
+      )}
     </main>
   );
 };
