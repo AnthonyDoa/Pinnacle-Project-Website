@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+ import Campaigns from '../Campaigns.json';
 
 const CampaignsListings = () => {
   const [sortOrder, setSortOrder] = useState('descending');
@@ -8,39 +9,28 @@ const CampaignsListings = () => {
   const [campaignData, setCampaignData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch campaign data from public/Campaigns.json
-  useEffect(() => {
-    fetch('/Campaigns.json')
-      .then((res) => res.json())
-      .then((data) => {
-        setCampaignData(data.Campaigns || []);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error('Error fetching campaign data:', err);
-        setLoading(false);
-      });
-  }, []);
-
-  // Handle window width (for responsive needs if used later)
+  // Handle window width
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setWindowWidth(window.innerWidth);
-      const handleResize = () => {
-        setWindowWidth(window.innerWidth);
-      };
+      const handleResize = () => setWindowWidth(window.innerWidth);
       window.addEventListener('resize', handleResize);
       return () => window.removeEventListener('resize', handleResize);
     }
   }, []);
 
-  // Sort campaigns based on year and sortOrder
-  const sortedCampaignByYear = useMemo(() => {
-    if (campaignData.length === 0) return [];
-
-    if (typeof campaignData[0]?.Year === 'undefined') {
-      console.warn("Some campaign items might lack a 'Year' property.");
+  useEffect(() => {
+    if (Campaigns && Array.isArray(Campaigns.Campaigns)) { // Access the array using Campaigns.Campaigns
+      setCampaignData(Campaigns.Campaigns);
+    } else {
+      console.error("Invalid campaigns format in JSON");
     }
+    setLoading(false);
+  }, []);
+
+  // Sort campaigns
+  const sortedCampaignByYear = useMemo(() => {
+    if (!Array.isArray(campaignData) || campaignData.length === 0) return [];
 
     const filteredCampaigns = campaignData.filter(
       (c) => typeof c?.Year === 'number' && !isNaN(c.Year)
