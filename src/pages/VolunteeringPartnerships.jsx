@@ -75,9 +75,9 @@ const VolunteeringPartnerships = () => {
             
                    
             
-                    {/* Link Button */}
+                
                     <Link
-                     to = "/Voluteer&Parthership"
+                     to = "/Campaigns"
                       
                       className="mt-6 inline-block bg-white text-black font-semibold px-6 py-3 rounded-xl shadow-lg hover:bg-gray-200 transition"
                     >
@@ -87,7 +87,7 @@ Contact Community Outreach
                     </Link>
                   </div>
             
-                  {/* Image Section - Now on the Right */}
+  
                   <img
                     src="https://images.unsplash.com/photo-1707924507299-2b5309dd755d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bG90cyUyMG9mJTIwcGVvcGxlJTIwam9pbmluZyUyMHRvZ2V0aGVyfGVufDB8fDB8fHww"
                     alt="Who we are"
