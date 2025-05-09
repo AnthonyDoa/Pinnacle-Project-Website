@@ -3,7 +3,7 @@ import FQASection from '../components/FQASection';
 import VolunteerForm from '../components/VolunteerForm';
 import { motion } from 'framer-motion';
 import { Link } from "react-router-dom";
-import bannerImage from "../assets/images/Banner.jpeg";
+
 
 const VolunteeringPartnerships = () => {
   return (
@@ -23,7 +23,7 @@ const VolunteeringPartnerships = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: 'easeInOut' }}
-        className="text-3xl sm:text-5xl lg:text-7xl font-bold text-transparent bg-clip-text bg-white"
+        className=" text-3xl sm:text-5xl lg:text-7xl font-bold text-transparent bg-clip-text bg-white"
       >
         Volunteering and Partnerships
         
@@ -50,7 +50,7 @@ const VolunteeringPartnerships = () => {
 </div>
 
 
-<div className="flex flex-col md:flex-row items-center p-10 bg-gradient-to-br from-black to-gray-500 text-white">
+<div className="flex flex-col md:flex-row items-center p-10 bg-black text-white">
       <img
         src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZG9uYXRlfGVufDB8fDB8fHww"
         alt="Who we are"
@@ -65,8 +65,8 @@ const VolunteeringPartnerships = () => {
         <VolunteerForm/>
       <FQASection />
 
-      <div className="flex flex-col md:flex-row items-center p-10  bg-gradient-to-br from-black to-gray-500 text-white">
-                  {/* Text Section - Now on the Left */}
+      <div className="flex flex-col md:flex-row items-center p-10  bg-gray-900 text-white">
+
                   <div className="text-left max-w-xl md:mr-10">
                     <h1 className="text-3xl font-bold">Partnerships</h1>
                     <p className="mt-4 text-lg">
