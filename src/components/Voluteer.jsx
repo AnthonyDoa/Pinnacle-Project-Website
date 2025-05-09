@@ -96,7 +96,7 @@ const VolunteeringSimilarToMission = () => {
             <p style={{ lineHeight: '1.75rem', marginBottom: '1.5rem', fontSize: '1.1rem' }}>
               {text}
             </p>
-            <LearnMoreButton to="/volunteer">Learn More</LearnMoreButton>
+            <LearnMoreButton to="/VolunteeringPartnerships">Learn More</LearnMoreButton>
           </Content>
         </VolunteerBox>
       </Container>
