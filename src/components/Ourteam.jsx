@@ -16,7 +16,7 @@ const teamMembers = [
 
 const OurTeam = () => {
   return (
-    <div className="p-10 bg-gray-700">
+    <div className="p-10 bg-black">
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-3xl font-bold text-white">Meet Our Team</h1>
         <Link
