@@ -13,7 +13,7 @@ const OurMission = () => {
   const joinText = `Join us in our mission to build a brighter, more inclusive society for everyone.`;
 
   return (
-    <div className="bg-gradient-to-br from-blue-600 to-green-100 py-16 md:py-24">
+    <div className="bg-black py-16 md:py-24">
       <div className="container mx-auto px-6 md:px-12 relative">
         {/* Subtle background graphic (optional) */}
         <div className="absolute top-0 left-0 w-full h-full bg-blue-50 opacity-10 rounded-lg transform rotate-3"></div>
