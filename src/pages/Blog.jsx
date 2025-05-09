@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const blogPosts = [
@@ -17,25 +17,18 @@ const blogPosts = [
 ];
 
 const Blog = () => {
+  useEffect(() => {
+    document.body.style.backgroundColor = 'black';
+    document.body.style.color = 'white';
+    return () => {
+      document.body.style.backgroundColor = '';
+      document.body.style.color = '';
+    };
+  }, []);
+
   return (
     <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
       <h1 style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>Blog</h1>
-
-      {/* Search bar */}
-      <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '2rem' }}>
-        <input
-          type="text"
-          placeholder="Search"
-          style={{
-            padding: '0.5rem 1rem',
-            borderRadius: '5px',
-            border: '1px solid #ccc',
-            width: '250px',
-          }}
-        />
-      </div>
-
-      {/* Blog cards */}
       <div
         style={{
           display: 'flex',
@@ -51,7 +44,7 @@ const Blog = () => {
             style={{
               textDecoration: 'none',
               color: 'inherit',
-              width: 'calc(50% - 1rem)', // 2 cards per row with spacing
+              width: 'calc(50% - 1rem)',
               maxWidth: '500px',
             }}
           >
