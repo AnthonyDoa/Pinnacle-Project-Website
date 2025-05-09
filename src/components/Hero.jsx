@@ -28,11 +28,11 @@ const Hero = () => {
                             border-2 border-white/0 shadow-lg flex items-center justify-center relative" // Added relative for absolute positioning
           >
             <div className="w-32 h-32 sm:w-48 sm:h-48 md:w-60 md:h-60 rounded-full bg-white/5 backdrop-blur-md flex items-center justify-center">
-              {/* Logo added here */}
+              
               <img
-                src="your-logo-url.png"    // Replace with your logo URL
+                src="your-logo-url.png"   
                 alt="Logo"
-                className="max-w-60% max-h-60% rounded-full" //Adjust size as needed
+                className="max-w-60% max-h-60% rounded-full"
               />
             </div>
 
@@ -55,7 +55,7 @@ const Hero = () => {
         >
 
           <Link
-            to='/jobs'
+            to='/Campaigns'
             className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20
                       text-white border-2 border-white/10
                       backdrop-blur-md shadow-lg
