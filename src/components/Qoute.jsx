@@ -2,16 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 
 const QuoteCard = styled.div`
-  background-color:rgba(10, 133, 167, 0.43);
-  border-radius: 8px;
+  background-color:rgb(0, 0, 0);
+
   padding: 3rem;
-  box-shadow: 0 4px 12px rgba(19, 18, 18, 0.08);
-  max-width: 10000px;
+  max-width: 100000000000000px;
   text-align: center;
 `;
 
 const QuoteText = styled.blockquote`
-  color: #333;
+  color: rgb(255, 255, 255);
   font-size: 1.25rem;
   line-height: 1.75rem;
   margin-bottom: 1.5rem;
@@ -19,12 +18,12 @@ const QuoteText = styled.blockquote`
 `;
 
 const Source = styled.p`
-  color: #777;
+  color: rgb(255, 255, 255);
   font-size: 0.9rem;
 `;
 
 const Title = styled.h3`
-  color: #2c5282; /* A nice blue */
+  color:rgb(255, 255, 255); 
   font-size: 1.5rem;
   margin-bottom: 1rem;
   text-align: center
