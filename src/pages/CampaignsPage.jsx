@@ -56,7 +56,7 @@ const CampaignsPage = ({
     ></motion.div>
   </div>
 </div>
-      <div className="flex flex-col md:flex-row items-center p-10 bg-gradient-to-br from-black to-gray-500 text-white">
+      <div className="flex flex-col md:flex-row items-center p-10 bg-black text-white">
       <img
         src="https://www.smallbusinesscoach.org/wp-content/uploads/2022/05/marketing-campaigns.jpg"
         alt="Who we are"
