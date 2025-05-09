@@ -16,7 +16,7 @@ const Partherships = () => {
         </p>
   
             <Link
-             to = "/VoluteerPartnerships"
+             to = "/VolunteeringPartnerships"
               
               className="mt-6 inline-block bg-white text-indigo-600 font-semibold px-6 py-3 rounded-xl shadow-lg hover:bg-gray-200 transition"
             >
