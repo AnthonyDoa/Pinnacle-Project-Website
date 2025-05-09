@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const VolunteerSectionContainer = styled.div`
   padding-top: 4rem;
   padding-bottom: 6rem;
-  background-image: linear-gradient(to bottom right,rgb(2, 2, 2),rgb(93, 96, 96));
+  background-image: black
 `;
 
 const Container = styled.div`
