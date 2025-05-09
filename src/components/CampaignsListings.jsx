@@ -46,7 +46,7 @@ const CampaignsListings = () => {
   };
 
   return (
-    <main className="flex flex-col justify-start items-center min-h-screen bg-gradient-to-br from-blue-600 to-pink-500 py-10">
+    <main className="flex flex-col justify-start items-center min-h-screen bg-black py-10">
       <div className="w-full text-center mb-8 px-4">
         <div className="container mx-auto">
           <h1 className="text-4xl lg:text-6xl font-bold text-white drop-shadow-md">
