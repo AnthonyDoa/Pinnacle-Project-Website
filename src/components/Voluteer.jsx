@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const VolunteerSectionContainer = styled.div`
   padding-top: 4rem;
   padding-bottom: 6rem;
-  background-image: linear-gradient(to bottom right, #e0f2fe, #ccfbfb);
+  background-color: rgb(36, 36, 36)
 `;
 
 const Container = styled.div`
@@ -25,7 +25,7 @@ const Title = styled.h2`
   font-size: 2.25rem;
   line-height: 2.5rem;
   font-weight: 600;
-  color: #2d3748; /* Dark gray */
+  color:rgb(255, 255, 255); /* Dark gray */
   margin-bottom: 1rem;
 `;
 
